@@ -1,0 +1,12 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:eaglebank;DB_CLOSE_DELAY=-1
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+
+eaglebank:
+  jwt:
+    secret: test-jwt-secret-must-be-at-least-32-chars
+  password:
+    bcrypt-strength: 4

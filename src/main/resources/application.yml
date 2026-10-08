@@ -1,0 +1,40 @@
+spring:
+  application:
+    name: eagle-bank-one-api
+  datasource:
+    url: jdbc:h2:file:./data/eaglebank;DB_CLOSE_DELAY=-1
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate.jdbc.time_zone: UTC
+  jackson:
+    deserialization:
+      fail-on-unknown-properties: true
+    serialization:
+      write-dates-as-timestamps: false
+
+server:
+  port: 8080
+  error:
+    include-message: never
+    include-stacktrace: never
+    include-binding-errors: never
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    url: /openapi.yaml
+    disable-swagger-default-url: true
+
+eaglebank:
+  jwt:
+    secret: ${JWT_SECRET:local-dev-only-change-this-secret-key}
+    ttl-seconds: 3600
+    issuer: eagle-bank
+  password:
+    bcrypt-strength: ${BCRYPT_STRENGTH:10}
